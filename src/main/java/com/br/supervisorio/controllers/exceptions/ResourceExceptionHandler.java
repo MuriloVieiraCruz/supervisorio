@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.Instant;
 
 @ControllerAdvice
+
 public class ResourceExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
