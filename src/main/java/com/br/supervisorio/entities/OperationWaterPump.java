@@ -6,8 +6,8 @@ import lombok.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 @EqualsAndHashCode(of = {"id"})
 public class OperationWaterPump {
 

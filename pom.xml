@@ -26,6 +26,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- JSON dependency -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>
+		</dependency>
+
 		<!-- Swagger dependency -->
 		<dependency>
 			<groupId>org.springdoc</groupId>

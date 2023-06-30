@@ -4,7 +4,10 @@ import com.br.supervisorio.entities.OperationWaterPump;
 import com.br.supervisorio.entities.WaterLevel;
 import com.br.supervisorio.services.OperationWaterPumpService;
 import com.br.supervisorio.services.WaterLevelService;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,20 +36,23 @@ public class OperationWaterPumpController {
     }
 
     @PutMapping("/manual/{id}")
-    public ResponseEntity<OperationWaterPump> updateManual(@PathVariable Long id, @RequestBody boolean newManualValue) {
-        OperationWaterPump operationWaterPump = operationWaterPumpService.updateManualValue(id, newManualValue);
+    public ResponseEntity<OperationWaterPump> updateManual(@PathVariable Long id, @RequestBody JsonNode newManualValue) {
+        boolean manualValue = newManualValue.get("manual").asBoolean();
+        OperationWaterPump operationWaterPump = operationWaterPumpService.updateManualValue(id, manualValue);
         return ResponseEntity.ok().body(operationWaterPump);
     }
 
     @PutMapping("/solenoid/{id}")
-    public ResponseEntity<OperationWaterPump> updateSolenoid(@PathVariable Long id, @RequestBody boolean newSolenoidlValue) {
-        OperationWaterPump operationWaterPump = operationWaterPumpService.updateSolenoidValue(id, newSolenoidlValue);
+    public ResponseEntity<OperationWaterPump> updateSolenoid(@PathVariable Long id, @RequestBody JsonNode newSolenoidValue) {
+        boolean solenoidValue = newSolenoidValue.get("solenoid").asBoolean();
+        OperationWaterPump operationWaterPump = operationWaterPumpService.updateSolenoidValue(id, solenoidValue);
         return ResponseEntity.ok().body(operationWaterPump);
     }
 
     @PutMapping("/water_pump/{id}")
-    public ResponseEntity<OperationWaterPump> updateWaterPump(@PathVariable Long id, @RequestBody boolean newWaterPumpValue) {
-        OperationWaterPump operationWaterPump = operationWaterPumpService.updateWaterPumpValue(id, newWaterPumpValue);
+    public ResponseEntity<OperationWaterPump> updateWaterPump(@PathVariable Long id, @RequestBody JsonNode newWaterPumpValue) {
+        boolean waterPumpValue = newWaterPumpValue.get("solenoid").asBoolean();
+        OperationWaterPump operationWaterPump = operationWaterPumpService.updateWaterPumpValue(id, waterPumpValue);
         return ResponseEntity.ok().body(operationWaterPump);
     }
 }
