@@ -29,7 +29,24 @@ public class OperationWaterPumpService {
         return operationWaterPumpRepository.save(operationWaterPump);
     }
 
-    public OperationWaterPump update( OperationWaterPump operationWaterPump) {
+    public OperationWaterPump updateManualValue(Long id, boolean newManualValue) {
+        OperationWaterPump operationWaterPump = operationWaterPumpRepository.findById(id).get();
+//                .orElseThrow(() -> new ResourceNotFoundException("OperationWaterPump not found with id: " + id));
+        operationWaterPump.setManual(newManualValue);
+        return operationWaterPumpRepository.save(operationWaterPump);
+    }
+
+    public OperationWaterPump updateSolenoidValue(Long id, boolean newSolenoidValue) {
+        OperationWaterPump operationWaterPump = operationWaterPumpRepository.findById(id).get();
+//                .orElseThrow(() -> new ResourceNotFoundException("OperationWaterPump not found with id: " + id));
+        operationWaterPump.setSolenoid(newSolenoidValue);
+        return operationWaterPumpRepository.save(operationWaterPump);
+    }
+
+    public OperationWaterPump updateWaterPumpValue(Long id, boolean newWaterPumpValue) {
+        OperationWaterPump operationWaterPump = operationWaterPumpRepository.findById(id).get();
+//                .orElseThrow(() -> new ResourceNotFoundException("OperationWaterPump not found with id: " + id));
+        operationWaterPump.setWaterPump(newWaterPumpValue);
         return operationWaterPumpRepository.save(operationWaterPump);
     }
 }

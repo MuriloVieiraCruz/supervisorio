@@ -13,15 +13,15 @@ public class OperationWaterPump {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private boolean waterPump;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private boolean solenoid;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private boolean manual;
 }

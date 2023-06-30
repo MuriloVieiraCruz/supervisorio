@@ -32,9 +32,21 @@ public class OperationWaterPumpController {
         return ResponseEntity.ok().body(operationWaterPumpService.register(operationWaterPump));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<OperationWaterPump> update(@RequestBody OperationWaterPump operationWaterPump) {
-        return ResponseEntity.ok().body(operationWaterPumpService.update(operationWaterPump));
+    @PutMapping("/manual/{id}")
+    public ResponseEntity<OperationWaterPump> updateManual(@PathVariable Long id, @RequestBody boolean newManualValue) {
+        OperationWaterPump operationWaterPump = operationWaterPumpService.updateManualValue(id, newManualValue);
+        return ResponseEntity.ok().body(operationWaterPump);
     }
 
+    @PutMapping("/solenoid/{id}")
+    public ResponseEntity<OperationWaterPump> updateSolenoid(@PathVariable Long id, @RequestBody boolean newSolenoidlValue) {
+        OperationWaterPump operationWaterPump = operationWaterPumpService.updateSolenoidValue(id, newSolenoidlValue);
+        return ResponseEntity.ok().body(operationWaterPump);
+    }
+
+    @PutMapping("/water_pump/{id}")
+    public ResponseEntity<OperationWaterPump> updateWaterPump(@PathVariable Long id, @RequestBody boolean newWaterPumpValue) {
+        OperationWaterPump operationWaterPump = operationWaterPumpService.updateWaterPumpValue(id, newWaterPumpValue);
+        return ResponseEntity.ok().body(operationWaterPump);
+    }
 }
