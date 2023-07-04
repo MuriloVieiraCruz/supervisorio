@@ -1,24 +1,26 @@
 package com.br.supervisorio.controllers;
 
 import com.br.supervisorio.entities.Login;
+import com.br.supervisorio.repositories.LoginRepository;
 import com.br.supervisorio.services.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/login")
+@CrossOrigin(origins = "*")
 public class LoginController {
 
     private final LoginService loginService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Login> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(loginService.findById(id));
+    @PostMapping("/autenticar")
+    public List<Login> auntenticar(@RequestBody Login login){
+        List<Login> u = loginService.findByEmailAndPasswordIgnoreCase(login.getEmail(),login.getPassword());
+        return u;
     }
 
 }

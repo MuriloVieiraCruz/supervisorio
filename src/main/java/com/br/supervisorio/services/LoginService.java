@@ -6,14 +6,20 @@ import com.br.supervisorio.services.exceptions.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LoginService {
 
     private final LoginRepository loginRepository;
 
-    public Login findById(Long id) {
-        return loginRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("The id " + id + " was not found!"));
+    public List<Login> findByEmailAndPasswordIgnoreCase(String email, String password) {
+        List<Login> list = loginRepository.findByEmailAndPasswordIgnoreCase(email, password);
+        if (list == null || list.size() == 0) {
+            throw new EntityNotFoundException("The  entity " + email + " was not found!");
+        }else {
+            return list;
+        }
     }
 }
