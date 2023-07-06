@@ -51,7 +51,7 @@ public class OperationWaterPumpController {
 
     @PutMapping("/water_pump/{id}")
     public ResponseEntity<OperationWaterPump> updateWaterPump(@PathVariable Long id, @RequestBody JsonNode newWaterPumpValue) {
-        boolean waterPumpValue = newWaterPumpValue.get("solenoid").asBoolean();
+        boolean waterPumpValue = newWaterPumpValue.get("water_pump").asBoolean();
         OperationWaterPump operationWaterPump = operationWaterPumpService.updateWaterPumpValue(id, waterPumpValue);
         return ResponseEntity.ok().body(operationWaterPump);
     }

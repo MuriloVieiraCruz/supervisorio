@@ -16,10 +16,10 @@ public class WaterLevel {
     @Column(nullable = false, unique = true)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Double waterLevelReading;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Double fluxostatoReading;
 
 
