@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/operation_water_pump")
+@CrossOrigin(origins = "*")
 public class OperationWaterPumpController {
 
     private final OperationWaterPumpService operationWaterPumpService;

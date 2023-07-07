@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/water_level")
+@CrossOrigin(origins = "*")
 public class WaterLevelController {
 
     private final WaterLevelService waterLevelService;
